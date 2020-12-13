@@ -44,15 +44,15 @@ begin
 
         sI_slice <= sI ((i+1)*cN-1 downto i*cN);
 
-        if i = 0 generate
+        first: if i = 0 generate
             sO_slice <= sI_slice (cN-1 downto 1);
         end generate;
 
-        if i > 0 and i < cN-1 generate
+        middle: if i > 0 and i < cN-1 generate
             sO_slice <= sI_slice (cN-1 downto i+1) & sI_slice (i-1 downto 0);
         end generate;
 
-        if i = cN-1 generate
+        last: if i = cN-1 generate
             sO_slice <= sI_slice (cN-2 downto 0);            
         end generate;
 
